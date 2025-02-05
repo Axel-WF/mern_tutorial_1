@@ -2,7 +2,9 @@ import { create } from "zustand";
 
 export const usePropertyStore = create((set) => ({
     properties: [],
+
     setProperties: ( properties ) => set({ properties }),
+
     createProperty: async ( newProperty ) => {
         if ( !newProperty.name || !newProperty.price || !newProperty.image ) {
             return { success: false, message: "Por favor completa todos los campos." };
@@ -18,11 +20,13 @@ export const usePropertyStore = create((set) => ({
         set((state) => ({properties: [...state.properties, data.data]}));
         return { success: true, message: "Propiedad publicada con éxito." };
     },
+
     fetchProperties: async () => {
         const res = await fetch("/api/properties");
         const data = await res.json();
         set({properties: data.data});
     },
+
     deleteProperty: async (pid) => {
         const res = await fetch(`/api/properties/${pid}`, { method: "DELETE" });
         const data = await res.json();
@@ -31,4 +35,5 @@ export const usePropertyStore = create((set) => ({
         set((state) => ({ properties: state.properties.filter((property) => property._id !== pid) }));
 		return { success: true, message: data.message };
     },
+
 }));

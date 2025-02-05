@@ -1,12 +1,14 @@
+
 import { DeleteIcon, EditIcon } from "@chakra-ui/icons"
 import { Box, Heading, HStack, IconButton, Image, Text, useColorModeValue, useToast } from "@chakra-ui/react"
 import { usePropertyStore } from "../store/property"
 
 const PropertyCard = ({property}) => {
 
-
     const textColor = useColorModeValue("gray.600", "gray.200");
     const bgColor = useColorModeValue("white", "gray.800");
+
+
 
     const { deleteProperty } = usePropertyStore();
     const toast = useToast();
