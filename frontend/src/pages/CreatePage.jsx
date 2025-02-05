@@ -35,14 +35,14 @@ const CreatePage = () => {
     setNewProperty({name: "", price: "", image:""});
   };
 
-  return <Container>
+  return <Container minW={"full"} alignContent={"center"}>
     <VStack spacing={8}>
 
       <Heading as={"h1"} size={"2x1"} textAlign={"center"} mb={8}>
         Agregar propiedad
       </Heading>
       
-      <Box 
+      <Box
       w={"full"}
       bg={useColorModeValue("white","grey.800")}
       p={6}

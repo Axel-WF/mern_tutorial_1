@@ -8,7 +8,8 @@ const PropertyCard = ({property}) => {
 
     const [ updatedProperty, setUpdatedProperty] = useState(property)
 
-    const textColor = useColorModeValue("gray.600", "gray.200");
+    const priceTextColor = useColorModeValue("gray.500", "gray.400");
+    const titleTextColor = useColorModeValue("gray.700", "gray.200");
     const bgColor = useColorModeValue("white", "gray.800");
 
 
@@ -78,11 +79,11 @@ const PropertyCard = ({property}) => {
 
         <Box p={4}>
 
-            <Heading as={"h3"} size={"md"} mb={2}>
+            <Heading as={"h3"} size={"md"} mb={2} color={titleTextColor}>
                 {property.name}
             </Heading>
 
-            <Text fontWeight={"bold"} fontSize={"xl"} mb={4} color={textColor}>
+            <Text fontWeight={"bold"} fontSize={"xl"} mb={4} color={priceTextColor}>
                 {property.price} UF
             </Text>
 

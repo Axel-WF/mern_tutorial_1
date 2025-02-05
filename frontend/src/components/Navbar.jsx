@@ -1,6 +1,6 @@
 // import React from 'react'
 
-import { Container, Flex, Text, HStack, Button, useColorMode } from "@chakra-ui/react"
+import { Box, Flex, Text, HStack, Button, useColorMode } from "@chakra-ui/react"
 import { Link } from "react-router-dom";
 import { CiSquarePlus } from "react-icons/ci";
 import { LuSun, LuMoon } from "react-icons/lu";
@@ -11,13 +11,12 @@ import { LuSun, LuMoon } from "react-icons/lu";
 const Navbar = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
-    <Container maxW={"1140px"} px={4}>
-
+    <Box maxW={"100vw"} px={4} minH={"20vh"}>
       <Flex 
         h={ 16 } 
         alignItems={ "center" } 
         justifyContent={ "space-between" } 
-        flexDir={{ base: "column", sm: "row" }}>
+        flexDir={{ base: "row", sm: "row" }}>
         <Text 
           bgGradient={ "linear(to-r, pink.400, red.500)" }
           bgClip={"text"} 
@@ -48,7 +47,7 @@ const Navbar = () => {
 
       </Flex>
 
-    </Container>
+    </Box>
   )
 }
 
