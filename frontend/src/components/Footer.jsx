@@ -10,7 +10,7 @@ export const Footer = () => (
         <Logo height="32" />
         <HStack gap="4">
           {socialLinks.map(({ href, icon }, index) => (
-            <Link key={index} href={href} colorpalette="gray">
+            <Link key={index} href={href} colorpalette="red">
               <Icon size="md">{icon}</Icon>
             </Link>
           ))}
@@ -26,6 +26,5 @@ const socialLinks = [
   { href: 'https://github.com', icon: <SiGithub /> },
   { href: 'https://www.linkedin.com', icon: <SiLinkedin /> },
 ]
-
 
 export default Footer
