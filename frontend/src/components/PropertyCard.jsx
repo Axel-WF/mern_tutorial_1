@@ -56,7 +56,7 @@ const PropertyCard = ({property}) => {
         } else {
             toast({
                 description: message,
-                status: 'error',
+                status: 'success',
                 duration: 3000,
                 isClosable: true,
             });

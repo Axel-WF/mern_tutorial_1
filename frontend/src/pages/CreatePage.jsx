@@ -70,7 +70,7 @@ const CreatePage = () => {
           onChange={(e) => setNewProperty({ ...newProperty, image: e.target.value})}/>
         
           <Button colorScheme='red' onClick={handleAddProperty} w='full'>
-            Finalizar Publicación
+            Publicar
           </Button>
         
         </VStack>

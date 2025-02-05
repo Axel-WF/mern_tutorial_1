@@ -28,20 +28,58 @@ export const usePropertyStore = create((set) => ({
     },
 
     deleteProperty: async (pid) => {
-        const res = await fetch(`/api/properties/${pid}`, { method: "DELETE" });
-        const data = await res.json();
-        if (!data.success) return { success: false, message: data.message };
-
-        set((state) => ({ properties: state.properties.filter((property) => property._id !== pid) }));
-		return { success: true, message: data.message };
+        try {
+            const res = await fetch(`/api/properties/${pid}`, { 
+                method: "DELETE"
+            });
+            const data = await res.json();
+            
+            // Si la respuesta no es exitosa, retornamos el error
+            if (!data.success) {
+                return { success: false, message: data.message };
+            }
+            
+            // Actualizamos el estado de forma inmediata
+            set((state) => {
+                const filteredProperties = state.properties.filter(
+                    property => property._id !== pid
+                );
+                return { properties: filteredProperties };
+            });
+            
+            return { success: true, message: "Propiedad eliminada con éxito" };
+        } catch (error) {
+            console.error("Error al eliminar:", error);
+            return { success: false, message: "Error al eliminar la propiedad" };
+        }
     },
     updateProperty: async (pid, updatedProperty) => {
-        const res = await fetch(`/api/properties/${pid}`, { method: "PATCH", headers: {"Content-Type":"application/json"}, body: JSON.stringify(updatedProperty), });
-        const data = await res.json();
-        if (data.success) return { success: false, message: data.message };
-        set((state) => ({ 
-            properties: state.properties.map((property) => (property._id === pid ? data.data : property ))
-        }));
-        return { success: true, message: data.message };
+        try {
+            const res = await fetch(`/api/properties/${pid}`, { 
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(updatedProperty)
+            });
+            const data = await res.json();
+            
+            // Si la respuesta no es exitosa, retornamos el error
+            if (!data.success) {
+                return { success: false, message: data.message };
+            }
+            
+            // Actualizamos el estado de forma inmediata
+            set((state) => ({
+                properties: state.properties.map(property => 
+                    property._id === pid ? data.data : property
+                )
+            }));
+            
+            return { success: true, message: "Propiedad actualizada con éxito" };
+        } catch (error) {
+            console.error("Error al actualizar:", error);
+            return { success: false, message: "Error al actualizar la propiedad" };
+        }
     }
 }));
