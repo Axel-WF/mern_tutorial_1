@@ -5,7 +5,8 @@ import { usePropertyStore } from "../store/property";
 import PropertyCard from "../components/PropertyCard";
 
 const HomePage = () => {
-  const { fetchProperties, properties } = usePropertyStore();
+  const fetchProperties = usePropertyStore((state) => state.fetchProperties);
+  const properties = usePropertyStore((state) => state.properties);
 
   useEffect(() => {
     fetchProperties();
@@ -14,14 +15,13 @@ const HomePage = () => {
   return (
     <Container maxW="container.xl" py={12}>
       <VStack spacing={8}>
-        <Text
-          fontSize={"30"}
-          fontWeight={"bold"}
-          bgGradient={"linear(to-r, pink.400, red.500)"}
-          bgClip={"text"}
-          textAlign={"center"}
-          textTransform={"uppercase"}
-        >
+        <Text 
+        fontSize={"30"} 
+        fontWeight={"bold"} 
+        bgGradient={"linear(to-r, pink.400, red.500)"} 
+        bgClip={"text"} 
+        textAlign={"center"} 
+        textTransform={"uppercase"}>
           Nuestras propiedades!
         </Text>
 
